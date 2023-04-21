@@ -28,6 +28,12 @@ body {
 
 }
 
+.todo {
+  display: block;
+  width: 500px;
+  margin: 0 auto 0;
+}
+
 .section__header {
   display: block;
   margin: 0 0 20px;
@@ -39,24 +45,20 @@ body {
   text-transform: uppercase;
 }
 
-.todo {
-  display: block;
-  width: 500px;
-  margin: 0 auto 0;
-}
-
-.todo__input {
+.input__group {
   display: flex;
 }
 
-.todo__input_text{
+.input-group__input {
   width: 56%;
   display: inline-block;
-  flex-grow: 1
+  flex-grow: 1;
+  outline: none;
 }
 
-button {
+.input-group__button {
   background: none;
+  outline: none;
   border: 0px;
   color: #888;
   font-size: 15px;
@@ -65,12 +67,8 @@ button {
   cursor: pointer;
 }
 
-button:hover {
+.input-group__button:hover {
   color: #3a3a3a;
-}
-
-input{
-  outline: none;
 }
 
 input[type="text"] {
@@ -109,7 +107,7 @@ li > * {
   vertical-align: middle;
 }
 
-li > input[type="checkbox"] {
+.input__group_checkbox {
   margin: 0 10px;
 }
 
@@ -124,13 +122,13 @@ li > input[type="text"] {
   width: 226px
 }
 
-button.delete img {
+.input-group__button-delete_img {
   height: 2em;
   transform: rotateZ(45deg);
   transition: transform 200ms ease-in;
 }
 
-button.delete img:hover {
+.input-group__button-delete_img:hover {
   transform: rotateZ(0);
 }
 

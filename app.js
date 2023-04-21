@@ -35,10 +35,11 @@ const createNewTaskElement = function(taskString) {
   editInput.className = "todo__input_text";
 
   editButton.innerText = "Edit"; //innerText encodes special characters, HTML does not.
-  editButton.className = "edit";
+  editButton.className = "input-group__button edit";
 
-  deleteButton.className = "delete";
+  deleteButton.className = "input-group__button delete";
   deleteButtonImg.src =  "./remove.svg";
+  deleteButtonImg.className = "input-group__button-delete_img"  
   deleteButtonImg.setAttribute("alt", "delete button")
   deleteButton.appendChild(deleteButtonImg);
 
@@ -126,9 +127,9 @@ addButton.addEventListener("click",ajaxRequest);
 const bindTaskEvents = function(taskListItem,checkBoxEventHandler) {
   console.log("bind list item events");
   //select ListItems children
-  const checkBox = taskListItem.querySelector("input[type=checkbox]");
-  const editButton = taskListItem.querySelector("button.edit");
-  const deleteButton = taskListItem.querySelector("button.delete");
+  const checkBox = taskListItem.querySelector("input__group_checkbox");
+  const editButton = taskListItem.querySelector("input-group__button-edit");
+  const deleteButton = taskListItem.querySelector("input-group__button-delete");
   //Bind editTask to edit button.
   editButton.onclick = editTask;
   //Bind deleteTask to delete button.
