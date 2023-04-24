@@ -7,7 +7,7 @@
 
 const taskInput = document.getElementById("new-task"); //Add a new task.
 const addButton = document.getElementById("button-add"); //first button
-const incompleteTaskHolder = document.getElementById("incompleteTasks"); //ul of #incompleteTasks
+const incompleteTaskHolder = document.getElementById("incompleted-tasks"); //ul of #incompleteTasks
 const completedTasksHolder = document.getElementById("completed-tasks"); //completed-tasks
 
 //New task list item
@@ -94,7 +94,7 @@ const editTask = function () {
     label.classList.add("input-group__label-edit");
     editInput.classList.add("input-group__input-edit");
     editInput.classList.remove("input-group__input-list")
-  }  
+  }
 };
 
 //Delete task.
@@ -111,8 +111,19 @@ const taskCompleted = function () {
   console.log("Complete Task...");
   //Append the task list item to the #completed-tasks
   const listItem = this.parentNode;
+  const label = listItem.querySelector(".input-group__label");
   completedTasksHolder.appendChild(listItem);
   bindTaskEvents(listItem, taskIncomplete);
+  const containsClass = listItem.classList.contains("input-group-complit");
+  console.log(containsClass)
+  if (containsClass) {
+    listItem.classList.remove("input-group-complit")
+    label.classList.remove("input-group__label-complited");
+  } else {
+    listItem.classList.add("input-group-complit")
+    label.classList.add("input-group__label-complited");
+  }
+  console.log(label);
 };
 
 const taskIncomplete = function () {
@@ -121,6 +132,17 @@ const taskIncomplete = function () {
   //When the checkbox is unchecked
   //Append the task list item to the #incompleteTasks.
   const listItem = this.parentNode;
+  const label = listItem.querySelector(".input-group__label");
+  const containsClass = listItem.classList.contains("input-group-complit");
+  console.log(containsClass)
+  if (containsClass) {
+    listItem.classList.remove("input-group-complit")
+    label.classList.remove("input-group__label-complited");
+  } else {
+    listItem.classList.add("input-group-complit")
+    label.classList.add("input-group__label-complited");
+  }
+  console.log(label);
   incompleteTaskHolder.appendChild(listItem);
   bindTaskEvents(listItem, taskCompleted);
 };
@@ -140,9 +162,7 @@ const bindTaskEvents = function (taskListItem, checkBoxEventHandler) {
   //select ListItems children
   const checkBox = taskListItem.querySelector(".input-group__checkbox");
   const editButton = taskListItem.querySelector(".input-group__button-edit");
-  const deleteButton = taskListItem.querySelector(
-    ".input-group__button-delete"
-  );
+  const deleteButton = taskListItem.querySelector(".input-group__button-delete");
   //Bind editTask to edit button.
   editButton.onclick = editTask;
   //Bind deleteTask to delete button.
